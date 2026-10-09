@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"Fast Jack" Beckman</title>
+<meta name="description" content="A redesign concept for &quot;Fast Jack&quot; Beckman's website — 2012 NHRA Funny Car World Champion, driver of the PEAK Chevrolet SS Funny Car for John Force Racing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#05070C;
+    --night:#080C17;          /* matches the driver-portrait backdrop */
+    --panel:#0E1424;
+    --blue:#1463E6;           /* PEAK blue */
+    --blue-hi:#3B8BFF;
+    --blue-deep:#0A3C9C;
+    --ice:#EEF4FF;
+    --white:#FFFFFF;
+    --ink:#0B1220;
+    --mute-d:#93A0B8;         /* muted text on dark */
+    --mute-l:#566175;         /* muted text on light */
+    --line-d:rgba(255,255,255,.12);
+    --line-l:rgba(11,18,32,.12);
+    --gutter:clamp(16px,4vw,56px);
+    --max:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{background:var(--black);color:var(--white);font-family:"Barlow",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+  .num{font-variant-numeric:tabular-nums}
+  .display{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+  .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:14px;color:var(--blue-hi)}
+  .light .eyebrow{color:var(--blue)}
+  h2.display{font-weight:800;font-style:italic;font-size:clamp(40px,6vw,72px)}
+  .sec{padding:clamp(64px,9vw,112px) 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .sec-head .eyebrow{margin-bottom:10px}
+  .light{background:var(--white);color:var(--ink)}
+  .ice{background:var(--ice);color:var(--ink)}
+  .more{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;text-decoration:none;border-bottom:2px solid var(--blue);padding-bottom:2px;white-space:nowrap}
+  .more:hover{color:var(--blue-hi)}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:16px;text-decoration:none;padding:14px 24px;border-radius:2px;transition:background .2s,color .2s,border-color .2s}
+  .btn-blue{background:var(--blue);color:var(--white)}
+  .btn-blue:hover{background:var(--blue-hi)}
+  .btn-ghost{border:1.5px solid var(--line-d);color:var(--white)}
+  .btn-ghost:hover{border-color:var(--white)}
+  .light .btn-ghost,.ice .btn-ghost{border-color:var(--line-l);color:var(--ink)}
+  .light .btn-ghost:hover,.ice .btn-ghost:hover{border-color:var(--ink)}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(5,7,12,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-d)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+  .brand img{height:44px;width:auto}
+  nav>ul{display:flex;list-style:none;gap:4px}
+  nav li{position:relative}
+  nav a.top,nav button.top{display:flex;align-items:center;gap:6px;height:68px;padding:0 12px;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--white);background:none;border:0;cursor:pointer}
+  nav a.top:hover,nav li:hover>.top,nav li:focus-within>.top{color:var(--blue-hi)}
+  .caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);opacity:.7}
+  .drop{position:absolute;top:100%;left:0;min-width:230px;background:var(--panel);border:1px solid var(--line-d);border-top:2px solid var(--blue);list-style:none;padding:8px 0;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .15s,transform .15s,visibility .15s}
+  nav li:hover>.drop,nav li:focus-within>.drop{opacity:1;visibility:visible;transform:none}
+  .drop a{display:block;padding:9px 18px;font-size:15px;text-decoration:none;color:var(--mute-d)}
+  .drop a:hover{color:var(--white);background:rgba(255,255,255,.04)}
+  .drop .grp{padding:10px 18px 4px;font-family:"Barlow Condensed",sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-hi)}
+  nav .cta{margin-left:10px;display:flex;align-items:center}
+  nav .cta a{padding:10px 18px;font-size:15px}
+  .menu-btn{display:none;background:none;border:0;color:var(--white);width:44px;height:44px;cursor:pointer}
+  .menu-btn span{display:block;width:24px;height:2px;background:currentColor;margin:5px auto;transition:transform .2s,opacity .2s}
+  @media (max-width:1100px){
+    .menu-btn{display:block}
+    nav{position:fixed;inset:68px 0 0 0;background:var(--black);overflow-y:auto;transform:translateX(100%);transition:transform .25s}
+    body.nav-open nav{transform:none}
+    body.nav-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    body.nav-open .menu-btn span:nth-child(2){opacity:0}
+    body.nav-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    nav>ul{flex-direction:column;gap:0;padding:12px var(--gutter) 40px}
+    nav a.top,nav button.top{height:auto;padding:16px 0;font-size:22px;border-bottom:1px solid var(--line-d);width:100%}
+    .drop{position:static;opacity:1;visibility:visible;transform:none;border:0;background:none;padding:4px 0 12px 14px;min-width:0}
+    .drop a{padding:7px 0}
+    .drop .grp{padding:10px 0 2px}
+    nav .cta{margin:24px 0 0}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--night);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(60% 70% at 78% 40%,rgba(20,99,230,.28),transparent 70%),
+    linear-gradient(115deg,transparent 58%,rgba(20,99,230,.10) 58%,rgba(20,99,230,.10) 61%,transparent 61%);pointer-events:none}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:24px;min-height:min(820px,calc(100vh - 68px))}
+  .hero-copy{padding:72px 0 64px;align-self:center}
+  .hero h1{font-weight:800;font-style:italic;font-size:clamp(68px,11vw,168px);margin:18px 0 22px}
+  .hero h1 .q{color:var(--blue-hi)}
+  .hero h1 .last{display:block;-webkit-text-stroke:2px var(--white);color:transparent}
+  .hero .lede{font-size:clamp(17px,1.6vw,20px);color:#C9D3E6;max-width:520px;margin-bottom:32px}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-photo{position:relative;align-self:end;justify-self:center;width:min(100%,460px)}
+  .hero-photo img{width:100%;height:auto;--fx:linear-gradient(to right,transparent,#000 16%,#000 84%,transparent);--fy:linear-gradient(to bottom,transparent,#000 7%,#000 80%,transparent);-webkit-mask-image:var(--fx),var(--fy);-webkit-mask-composite:source-in;mask-image:var(--fx),var(--fy);mask-composite:intersect}
+  .champ-tag{position:absolute;left:-6%;top:22%;background:var(--white);color:var(--ink);padding:12px 16px;border-left:4px solid var(--blue);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+  .champ-tag b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:800;font-style:italic;line-height:1}
+  .champ-tag span{font-size:13px;font-weight:600;color:var(--mute-l);text-transform:uppercase;letter-spacing:.06em}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;min-height:0}
+    .hero-copy{padding:56px 0 8px}
+    .hero-photo{width:min(78%,360px)}
+    .champ-tag{left:-10%;top:auto;bottom:16%}
+  }
+
+  /* next-race ticker under hero */
+  .ticker{background:var(--white);color:var(--ink)}
+  .ticker .wrap{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:28px;padding-top:18px;padding-bottom:18px}
+  .live{display:inline-flex;align-items:center;gap:8px;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:14px;background:var(--blue);color:var(--white);padding:6px 12px}
+  .live i{width:8px;height:8px;border-radius:50%;background:var(--white);animation:pulse 1.6s infinite}
+  @keyframes pulse{50%{opacity:.25}}
+  .ticker .ev{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;text-transform:uppercase;line-height:1.05}
+  .ticker .ev small{display:block;font-family:"Barlow",sans-serif;font-weight:500;text-transform:none;font-size:15px;color:var(--mute-l);margin-top:3px}
+  .ticker .pts{text-align:right;border-left:1px solid var(--line-l);padding-left:28px}
+  .ticker .pts b{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:800;line-height:1}
+  .ticker .pts span{display:block;font-size:13px;color:var(--mute-l)}
+  @media (max-width:860px){
+    .ticker .wrap{grid-template-columns:1fr auto;gap:14px 20px}
+    .ticker .live{grid-column:1/-1;justify-self:start}
+    .ticker .ev{grid-column:1/-1}
+    .ticker .pts{text-align:left;border:0;padding:0}
+  }
+
+  /* ---------- by the numbers ---------- */
+  .numbers{background:var(--blue);position:relative;overflow:hidden}
+  .numbers::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 120px,rgba(255,255,255,.035) 120px 122px);pointer-events:none}
+  .numbers .eyebrow{color:rgba(255,255,255,.75)}
+  .numbers .sec-head{margin-bottom:48px}
+  .big-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.3)}
+  .big-stats>div{padding:28px 20px 24px 0;border-right:1px solid rgba(255,255,255,.3)}
+  .big-stats>div+div{padding-left:24px}
+  .big-stats>div:last-child{border-right:0}
+  .stat-v{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;font-size:clamp(56px,7.4vw,104px);line-height:.9;font-variant-numeric:tabular-nums}
+  .stat-v sup{font-size:.36em;font-style:normal;vertical-align:top;margin-left:4px;position:relative;top:.35em}
+  .stat-l{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:16px;margin-top:10px}
+  .stat-n{font-size:14px;color:rgba(255,255,255,.75);margin-top:4px}
+  .small-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.3);margin-top:28px;border:1px solid rgba(255,255,255,.3)}
+  .small-stats>div{background:var(--blue-deep);padding:20px 22px;display:flex;align-items:baseline;gap:14px}
+  .small-stats b{font-family:"Barlow Condensed",sans-serif;font-size:40px;font-weight:800;font-style:italic;line-height:1}
+  .small-stats span{font-size:14px;line-height:1.3;color:rgba(255,255,255,.85)}
+  .numbers .foot{font-size:13px;color:rgba(255,255,255,.7);margin-top:18px}
+  @media (max-width:900px){
+    .big-stats{grid-template-columns:repeat(2,1fr)}
+    .big-stats>div{border-bottom:1px solid rgba(255,255,255,.3)}
+    .big-stats>div:nth-child(2){border-right:0}
+    .big-stats>div:nth-child(3){padding-left:0}
+    .small-stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:480px){.small-stats>div{flex-direction:column;gap:4px}}
+
+  /* ---------- crown jewels ---------- */
+  .jewels{background:var(--black)}
+  .jewel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .jewel{background:var(--panel);border:1px solid var(--line-d);padding:28px 26px 26px;position:relative;overflow:hidden}
+  .jewel::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--blue),transparent)}
+  .jewel .count{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;font-size:64px;line-height:.9;color:var(--blue-hi);font-variant-numeric:tabular-nums}
+  .jewel .count small{font-size:.5em;color:var(--mute-d);font-style:normal;margin-left:4px}
+  .jewel h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:24px;letter-spacing:.02em;margin:12px 0 10px;line-height:1.05}
+  .years{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .years span{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;padding:3px 9px;border:1px solid var(--line-d);color:var(--white)}
+  .years span.hl{background:var(--blue);border-color:var(--blue)}
+  .jewel p{font-size:15px;color:var(--mute-d)}
+  .jewel.wide{grid-column:span 2;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+  .jewel.wide .count{font-size:110px}
+  @media (max-width:960px){.jewel-grid{grid-template-columns:1fr 1fr}.jewel.wide{grid-column:span 2}}
+  @media (max-width:620px){.jewel-grid{grid-template-columns:1fr}.jewel.wide{grid-column:auto;grid-template-columns:1fr;gap:0}.jewel.wide .count{font-size:80px}}
+
+  /* ---------- 2026 season ---------- */
+  .season-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+  .feature{position:relative;background:var(--black);color:var(--white);overflow:hidden}
+  .feature img{width:100%;aspect-ratio:686/438;object-fit:cover}
+  .feature .cap{padding:24px 26px 28px}
+  .win-badge{display:inline-block;font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);padding:4px 12px;margin-bottom:12px}
+  .feature h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;text-transform:uppercase;font-size:clamp(30px,3.4vw,42px);line-height:.98;margin-bottom:10px}
+  .feature p{color:#C9D3E6;font-size:16px}
+  .feature .slip{display:flex;gap:28px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line-d);flex-wrap:wrap}
+  .slip b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:800;line-height:1}
+  .slip span{font-size:13px;color:var(--mute-d)}
+  .season-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-l);border:1px solid var(--line-l);margin-bottom:28px}
+  .season-tiles div{background:var(--white);padding:18px 20px}
+  .season-tiles b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;font-size:46px;line-height:1;color:var(--blue)}
+  .season-tiles span{font-size:14px;color:var(--mute-l)}
+  .timeline{list-style:none;border-left:2px solid var(--line-l);margin-left:6px}
+  .timeline li{position:relative;padding:0 0 18px 22px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--white);border:2px solid var(--blue)}
+  .timeline li.w::before{background:var(--blue)}
+  .timeline .t{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:19px;line-height:1.1}
+  .timeline .d{font-size:14px;color:var(--mute-l)}
+  .tag{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;margin-left:6px;vertical-align:2px;border:1px solid var(--blue);color:var(--blue)}
+  .tag.f{background:var(--blue);color:var(--white)}
+  @media (max-width:900px){.season-grid{grid-template-columns:1fr}}
+
+  /* ---------- schedule ---------- */
+  .sched-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+  .sched-grid h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:16px;color:var(--mute-l);margin-bottom:14px}
+  .race{display:grid;grid-template-columns:96px 1fr;gap:18px;background:var(--white);border:1px solid var(--line-l);padding:18px 20px;margin-bottom:12px;align-items:center}
+  .race.next{border:2px solid var(--blue);box-shadow:0 10px 30px rgba(20,99,230,.12)}
+  .date{text-align:center;border-right:1px solid var(--line-l);padding-right:14px}
+  .date b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:28px;line-height:1;white-space:nowrap}
+  .date span{white-space:nowrap;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}
+  .race .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:21px;text-transform:uppercase;line-height:1.05}
+  .race .l{font-size:14px;color:var(--mute-l);margin-top:2px}
+  .race .r{font-size:15px;margin-top:8px;color:var(--ink)}
+  .race .r b{font-weight:600}
+  .res{display:inline-block;font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;margin-right:8px;background:var(--ink);color:var(--white)}
+  .res.win{background:var(--blue)}
+  .sched-grid .more{display:inline-block;margin-top:10px}
+  @media (max-width:860px){.sched-grid{grid-template-columns:1fr}}
+
+  /* ---------- news ---------- */
+  .news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .card{text-decoration:none;display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line-l);transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(11,18,32,.12)}
+  .card img{width:100%;aspect-ratio:686/438;object-fit:cover}
+  .card .b{padding:18px 18px 22px}
+  .card time{font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}
+  .card h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;line-height:1.05;margin-top:6px}
+  @media (max-width:1000px){.news-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.news-grid{grid-template-columns:1fr}}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:center}
+  .about-img{position:relative}
+  .about-img img{width:100%;aspect-ratio:494/347;object-fit:cover}
+  .about-img::after{content:"";position:absolute;right:-14px;bottom:-14px;width:45%;height:45%;border-right:3px solid var(--blue);border-bottom:3px solid var(--blue);pointer-events:none}
+  .about-copy p{color:#C9D3E6;margin:18px 0 26px;max-width:560px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-d);border:1px solid var(--line-d);margin-bottom:28px}
+  .facts div{background:var(--black);padding:16px 18px}
+  .facts b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;line-height:1.1}
+  .facts span{font-size:14px;color:var(--mute-d)}
+  .about-copy .actions{display:flex;gap:12px;flex-wrap:wrap}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  /* ---------- media ---------- */
+  .media-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+  .media-grid a{position:relative;display:block;overflow:hidden;background:var(--panel)}
+  .media-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .media-grid a:hover img{transform:scale(1.04)}
+  .media-grid .m1{grid-row:span 2}
+  .media-grid .m1 img{aspect-ratio:auto}
+  .media-grid a:not(.m1) img{aspect-ratio:494/347}
+  .media-links{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+  .media-links a{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border:1px solid var(--line-d);text-decoration:none;font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:19px;transition:background .2s,border-color .2s}
+  .media-links a:hover{background:var(--blue);border-color:var(--blue)}
+  .media-links small{display:block;font-family:"Barlow",sans-serif;font-weight:400;text-transform:none;letter-spacing:0;font-size:13px;color:var(--mute-d)}
+  .media-links a:hover small{color:var(--white)}
+  .arrow{font-size:20px}
+  @media (max-width:860px){.media-grid{grid-template-columns:1fr 1fr}.media-grid .m1{grid-column:span 2;grid-row:auto}.media-grid .m1 img{aspect-ratio:494/347}.media-links{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.media-links{grid-template-columns:1fr}}
+
+  /* ---------- projects (el camino / hot rod history) ---------- */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .proj{position:relative;display:block;min-height:420px;overflow:hidden;text-decoration:none;color:var(--white)}
+  .proj img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .proj:hover img{transform:scale(1.04)}
+  .proj::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,7,12,.95) 10%,rgba(5,7,12,.2) 65%)}
+  .proj .b{position:absolute;left:0;right:0;bottom:0;padding:28px;z-index:1}
+  .proj h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;text-transform:uppercase;font-size:clamp(32px,3.6vw,46px);line-height:.95;margin:8px 0 10px}
+  .proj p{color:#C9D3E6;font-size:15px;max-width:460px}
+  .proj .sub{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
+  .proj .sub span{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;border-bottom:2px solid var(--blue)}
+  @media (max-width:860px){.proj-grid{grid-template-columns:1fr}.proj{min-height:360px}}
+
+  /* ---------- partners ---------- */
+  .logos{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .logos a{display:grid;place-items:center;background:var(--white);border:1px solid var(--line-l);aspect-ratio:1;padding:6px;transition:border-color .2s,box-shadow .2s}
+  .logos a:hover{border-color:var(--blue);box-shadow:0 10px 24px rgba(20,99,230,.12)}
+  .logos img{width:100%;height:auto}
+  .logos a.feat{grid-column:span 2;grid-row:span 2;border:2px solid var(--blue)}
+  @media (max-width:1000px){.logos{grid-template-columns:repeat(4,1fr)}}
+  @media (max-width:520px){.logos{grid-template-columns:repeat(3,1fr)}.logos a.feat{grid-column:span 3;grid-row:auto;aspect-ratio:2/1}.logos a.feat img{width:auto;height:100%}}
+  .sponsor{margin-top:48px;background:var(--black);color:var(--white);display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:28px;padding:clamp(28px,4vw,48px);position:relative;overflow:hidden}
+  .sponsor::before{content:"";position:absolute;right:-80px;top:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(20,99,230,.45),transparent 70%)}
+  .sponsor h3{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-style:italic;text-transform:uppercase;font-size:clamp(32px,4vw,52px);line-height:.95;margin:8px 0 12px}
+  .sponsor p{color:#C9D3E6;max-width:560px}
+  .sponsor .btn-ghost{border-color:var(--line-d);color:var(--white)}
+  .sponsor .btn-ghost:hover{border-color:var(--white)}
+  .sponsor .actions{position:relative;display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  @media (max-width:860px){.sponsor{grid-template-columns:1fr}.sponsor .btn-ghost{border-color:var(--line-d);color:var(--white)}
+  .sponsor .btn-ghost:hover{border-color:var(--white)}
+  .sponsor .actions{justify-content:flex-start}}
+
+  /* ---------- contact / footer ---------- */
+  .connect{background:var(--night);border-top:4px solid var(--blue)}
+  .connect-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
+  .connect h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:16px;color:var(--mute-d);margin-bottom:16px}
+  .social{display:flex;gap:10px;flex-wrap:wrap}
+  .social a{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--line-d);transition:background .2s,border-color .2s}
+  .social a:hover{background:var(--blue);border-color:var(--blue)}
+  .social svg{width:20px;height:20px;fill:var(--white)}
+  .linklist{list-style:none}
+  .linklist li{border-bottom:1px solid var(--line-d)}
+  .linklist a{display:flex;justify-content:space-between;padding:11px 0;text-decoration:none;color:#C9D3E6}
+  .linklist a:hover{color:var(--white)}
+  .connect p{color:#C9D3E6;margin-bottom:22px}
+  footer{background:var(--black);border-top:1px solid var(--line-d)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;padding-bottom:26px;flex-wrap:wrap;font-size:14px;color:var(--mute-d)}
+  footer img{height:36px;width:auto}
+  footer .l{display:flex;align-items:center;gap:20px}
+  @media (max-width:860px){.connect-grid{grid-template-columns:1fr}}
+
+  :focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Fast Jack Beckman — home"><img src="img/logo.png" alt="Fast Jack Beckman"></a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        <li><a class="top" href="#top">Home</a></li>
+        <li>
+          <a class="top" href="#about">About <i class="caret"></i></a>
+          <ul class="drop">
+            <li><a href="#about">About Jack</a></li>
+            <li><a href="https://gofastjack.com/survivors-story/">Survivor's Story</a></li>
+          </ul>
+        </li>
+        <li><a class="top" href="#schedule">Schedule</a></li>
+        <li><a class="top" href="#news">News</a></li>
+        <li><a class="top" href="#partners">Partners</a></li>
+        <li><a class="top" href="https://johnforceracing.com/" target="_blank" rel="noopener">JFR</a></li>
+        <li>
+          <a class="top" href="#media">Media <i class="caret"></i></a>
+          <ul class="drop">
+            <li class="grp">Photos</li>
+            <li><a href="https://gofastjack.com/2026-gallery/">2026 Gallery</a></li>
+            <li><a href="https://gofastjack.com/2025-gallery/">2025 Gallery</a></li>
+            <li><a href="https://gofastjack.com/photos/2024-gallery/">2024 Gallery</a></li>
+            <li><a href="https://gofastjack.com/photos/2020-gallery/">2020 Gallery</a></li>
+            <li><a href="https://gofastjack.com/photos/2019-gallery/">2019 Gallery</a></li>
+            <li><a href="https://gofastjack.com/prior-years-galleries/">Prior Years</a></li>
+            <li class="grp">Videos</li>
+            <li><a href="https://gofastjack.com/videos/2026-videos/">2026 Videos</a></li>
+            <li><a href="https://gofastjack.com/videos/2025-videos/">2025 Videos</a></li>
+            <li><a href="https://gofastjack.com/videos/2024-videos/">2024 Videos</a></li>
+            <li><a href="https://gofastjack.com/videos/2020-videos/">2020 Videos</a></li>
+            <li><a href="https://gofastjack.com/videos/2019-videos/">2019 Videos</a></li>
+            <li><a href="https://gofastjack.com/hot-rod-history-series/">Hot Rod History Series</a></li>
+            <li><a href="https://gofastjack.com/prior-years-videos/">Prior Years</a></li>
+            <li class="grp">Listen</li>
+            <li><a href="https://gofastjack.com/podcasts/">Podcasts</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="top" href="#el-camino">El Camino <i class="caret"></i></a>
+          <ul class="drop">
+            <li><a href="https://gofastjack.com/el-camino/el-camino-the-restoration-journey/">Restoration Journey</a></li>
+            <li><a href="https://gofastjack.com/el-camino/the-journey-continues/">The Journey Continues</a></li>
+          </ul>
+        </li>
+        <li><a class="top" href="#contact">Contact</a></li>
+        <li class="cta"><a class="btn btn-blue" href="#sponsor">Sponsor</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">PEAK Chevrolet SS Funny Car · John Force Racing</div>
+        <h1 class="display"><span class="q">"</span>Fast Jack<span class="q">"</span><span class="last">Beckman</span></h1>
+        <p class="lede">2012 NHRA Funny Car World Champion. U.S. Air Force veteran. Cancer survivor. Three-time U.S. Nationals winner — and still hunting trophies at 330 mph.</p>
+        <div class="actions">
+          <a class="btn btn-blue" href="#schedule">2026 Schedule</a>
+          <a class="btn btn-ghost" href="#news">Latest News</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/portrait.jpg" alt="Jack Beckman in his PEAK fire suit holding his helmet" width="440" height="660">
+        <div class="champ-tag"><b>2012</b><span>Funny Car World Champ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT RACE TICKER -->
+  <section class="ticker" aria-label="Next race">
+    <div class="wrap">
+      <span class="live"><i></i>Up next</span>
+      <div class="ev">Texas NHRA FallNationals<small>Texas Motorplex · Ennis, TX · Race 18 of 20</small></div>
+      <div class="pts"><b class="num">4th</b><span>Funny Car points</span></div>
+      <a class="btn btn-blue" href="#schedule">Race info</a>
+    </div>
+  </section>
+
+  <!-- BY THE NUMBERS -->
+  <section class="numbers sec" aria-labelledby="numbers-h">
+    <div class="wrap" style="position:relative;z-index:1">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Career</div>
+          <h2 class="display" id="numbers-h">By the numbers</h2>
+        </div>
+      </div>
+      <div class="big-stats">
+        <div><div class="stat-v">3.812<sup>s</sup></div><div class="stat-l">Low E.T.</div><div class="stat-n">2024 NHRA Finals, Pomona</div></div>
+        <div><div class="stat-v">336.23</div><div class="stat-l">Top speed (MPH)</div><div class="stat-n">2024 NHRA Finals, Pomona</div></div>
+        <div><div class="stat-v">39</div><div class="stat-l">Funny Car wins</div><div class="stat-n">41 national events incl. Super Comp</div></div>
+        <div><div class="stat-v">350<sup>+</sup></div><div class="stat-l">Round wins</div><div class="stat-n">and counting</div></div>
+      </div>
+      <div class="small-stats">
+        <div><b class="num">81</b><span>Funny Car final rounds</span></div>
+        <div><b class="num">36</b><span>No. 1 qualifiers</span></div>
+        <div><b class="num">2</b><span>NHRA world championships</span></div>
+        <div><b class="num">7,000+</b><span>Students taught at Frank Hawley's</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROWN JEWELS -->
+  <section class="jewels sec" aria-labelledby="jewels-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">The big ones</div>
+          <h2 class="display" id="jewels-h">Crown jewels</h2>
+        </div>
+      </div>
+      <div class="jewel-grid">
+        <article class="jewel wide">
+          <div class="count">3<small>×</small></div>
+          <div>
+            <h3>Cornwell Quality Tools U.S. Nationals</h3>
+            <div class="years"><span>2015</span><span>2020</span><span class="hl">2026</span></div>
+            <p>Drag racing's biggest race, won three times. In 2026 he swept the weekend — the PlayNHRA All-Star Callout on Sunday, then the main event on Monday in a John Force tribute paint scheme.</p>
+          </div>
+        </article>
+        <article class="jewel">
+          <div class="count">2<small>×</small></div>
+          <h3>World Championships</h3>
+          <div class="years"><span class="hl">2012 Funny Car</span><span>2003 Super Comp</span></div>
+          <p>One of the few drivers to win NHRA titles in both Sportsman and Pro classes.</p>
+        </article>
+        <article class="jewel">
+          <div class="count">1<small>×</small></div>
+          <h3>Lucas Oil Winternationals</h3>
+          <div class="years"><span class="hl">2025</span></div>
+          <p>Delivered John Force Racing's 300th Funny Car victory at his home track. Plus Super Comp wins here in 1998 and 2003.</p>
+        </article>
+        <article class="jewel">
+          <div class="count">1<small>×</small></div>
+          <h3>In-N-Out Burger NHRA Finals</h3>
+          <div class="years"><span class="hl">2024</span></div>
+          <p>His first pro win at Pomona, with a career-best 3.812 to beat Austin Prock in the final.</p>
+        </article>
+        <article class="jewel">
+          <div class="count">4<small>×</small></div>
+          <h3>All-Star Bonus Races</h3>
+          <div class="years"><span>Skoal 2007</span><span>Traxxas 2013</span><span>2015</span><span>2017</span></div>
+          <p>The 2007 Skoal Shootout, three Traxxas Shootout titles, plus the 2026 PlayNHRA All-Star Callout.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2026 SEASON -->
+  <section class="light sec" aria-labelledby="season-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Season so far</div>
+          <h2 class="display" id="season-h">2026 Season</h2>
+        </div>
+        <a class="more" href="https://www.nhra.com/standings/unofficial-points" target="_blank" rel="noopener">Full standings →</a>
+      </div>
+      <div class="season-grid">
+        <article class="feature">
+          <img src="img/indy-2026.jpg" onerror="this.onerror=null;this.src='img/photo-2.jpg'" alt="Jack Beckman's John Force tribute Funny Car launching at the 2026 U.S. Nationals">
+          <div class="cap">
+            <span class="win-badge">Victory · Career win No. 39</span>
+            <h3>Indy double: Callout &amp; U.S. Nationals</h3>
+            <p>Low E.T. of every round on Monday, then a 3.965 in 127-degree heat to beat regular-season champ Matt Hagan in the final.</p>
+            <div class="slip">
+              <div><b class="num">3.965</b><span>Final-round E.T.</span></div>
+              <div><b class="num">327.35</b><span>MPH</span></div>
+              <div><b class="num">4.030</b><span>Hagan, opposite lane</span></div>
+            </div>
+          </div>
+        </article>
+        <div>
+          <div class="season-tiles">
+            <div><b class="num">2</b><span>National event wins</span></div>
+            <div><b class="num">3</b><span>No. 1 qualifiers</span></div>
+            <div><b class="num">2</b><span>Bonus-race wins</span></div>
+            <div><b class="num">4th</b><span>Funny Car points</span></div>
+          </div>
+          <ol class="timeline">
+            <li class="w"><div class="t">New England Nationals <span class="tag f">Win</span></div><div class="d">Epping, NH · Career win No. 38</div></li>
+            <li><div class="t">Thunder Valley Nationals <span class="tag">Bonus win</span></div><div class="d">Bristol, TN · Mission #2Fast2Tasty Challenge</div></li>
+            <li><div class="t">Route 66 &amp; Potomac Nationals <span class="tag">No. 1 Q</span></div><div class="d">Chicago, IL &amp; Mechanicsville, MD</div></li>
+            <li class="w"><div class="t">U.S. Nationals <span class="tag f">Win</span> <span class="tag">Callout win</span></div><div class="d">Indianapolis, IN · Career win No. 39</div></li>
+            <li><div class="t">Midwest Nationals <span class="tag">No. 1 Q</span></div><div class="d">Madison, IL · 36th career No. 1 qualifier</div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="ice sec" id="schedule" aria-labelledby="sched-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">NHRA Mission Foods Drag Racing Series</div>
+          <h2 class="display" id="sched-h">Race schedule</h2>
+        </div>
+        <a class="more" href="https://www.nhra.com/schedule/2026" target="_blank" rel="noopener">Full 2026 schedule →</a>
+      </div>
+      <div class="sched-grid">
+        <div>
+          <h3>Upcoming races</h3>
+          <div class="race next">
+            <div class="date"><span>Oct</span><b class="num">9–18</b></div>
+            <div><div class="n">Texas NHRA FallNationals</div><div class="l">Texas Motorplex · Ennis, TX</div></div>
+          </div>
+          <div class="race">
+            <div class="date"><span>Oct–Nov</span><b class="num">29–1</b></div>
+            <div><div class="n">MOPAR NHRA Las Vegas Nationals</div><div class="l">The Strip at Las Vegas Motor Speedway · Las Vegas, NV</div></div>
+          </div>
+          <div class="race">
+            <div class="date"><span>Nov</span><b class="num">12–15</b></div>
+            <div><div class="n">In-N-Out Burger NHRA Finals</div><div class="l">In-N-Out Burger Pomona Dragstrip · Pomona, CA</div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Recent results</h3>
+          <div class="race">
+            <div class="date"><span>Oct</span><b class="num">2–4</b></div>
+            <div>
+              <div class="n">NAPA Auto Parts Midwest Nationals</div><div class="l">World Wide Technology Raceway · Madison, IL</div>
+              <div class="r"><span class="res">Semifinal</span><b>No. 1 qualifier</b> — 3.866 @ 332.59. Fell to eventual winner Austin Prock.</div>
+            </div>
+          </div>
+          <div class="race">
+            <div class="date"><span>Sep</span><b class="num">25–27</b></div>
+            <div>
+              <div class="n">NHRA Nationals at The Rock</div><div class="l">Rockingham Dragway · Rockingham, NC</div>
+              <div class="r"><span class="res">Round 1</span>Qualified No. 4. Quicker run (3.916) but lost a holeshot to Daniel Wilkerson.</div>
+            </div>
+          </div>
+          <div class="race">
+            <div class="date"><span>Sep</span><b class="num">2–7</b></div>
+            <div>
+              <div class="n">Cornwell Quality Tools U.S. Nationals</div><div class="l">Lucas Oil Indianapolis Raceway Park · Indianapolis, IN</div>
+              <div class="r"><span class="res win">Winner</span>Def. Matt Hagan, 3.965 @ 327.35. Also won the All-Star Callout.</div>
+            </div>
+          </div>
+          <a class="more" href="https://gofastjack.com/race-schedule/">All results →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="light sec" id="news" aria-labelledby="news-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">From the track</div>
+          <h2 class="display" id="news-h">Latest news</h2>
+        </div>
+        <a class="more" href="https://gofastjack.com/jack-beckman-news/">More news →</a>
+      </div>
+      <div class="news-grid">
+        <a class="card" href="https://gofastjack.com/beckman-grabs-top-spot-at-midwest-nationals/">
+          <img src="img/news-10.03.26.jpg" alt="">
+          <div class="b"><time datetime="2026-10-03">Oct 3, 2026</time><h3>Beckman grabs top spot at Midwest Nationals</h3></div>
+        </a>
+        <a class="card" href="https://gofastjack.com/beckman-knows-importance-of-st-louis-weekend/">
+          <img src="img/news-09.30.26.jpg" alt="">
+          <div class="b"><time datetime="2026-09-30">Sep 30, 2026</time><h3>Beckman knows importance of St. Louis weekend</h3></div>
+        </a>
+        <a class="card" href="https://gofastjack.com/short-sunday-for-jfr-at-the-rock/">
+          <img src="img/news-09.27.26.jpg" alt="">
+          <div class="b"><time datetime="2026-09-27">Sep 27, 2026</time><h3>Short Sunday for JFR at The Rock</h3></div>
+        </a>
+        <a class="card" href="https://gofastjack.com/strong-saturday-for-jfr-at-the-rock/">
+          <img src="img/news-09.26.26.jpg" alt="">
+          <div class="b"><time datetime="2026-09-26">Sep 26, 2026</time><h3>Strong Saturday for JFR at The Rock</h3></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="about-img"><img src="img/photo-4.jpg" alt="Jack Beckman strapped into the cockpit of the PEAK Funny Car"></div>
+      <div class="about-copy">
+        <div class="eyebrow">About Jack</div>
+        <h2 class="display" id="about-h">Racer. Teacher.<br>Survivor.</h2>
+        <p>Hooked on drag racing at age 7 in the San Fernando Valley, Jack worked his way up from Super Comp to Funny Car. He spent 11 years teaching at Frank Hawley's Drag Racing School, beat lymphoma in 2004, and won his first Funny Car race in Las Vegas two years later. In 2024 he took over the PEAK Chevrolet for John Force — and kept winning.</p>
+        <div class="facts">
+          <div><b>U.S. Air Force</b><span>Honorably discharged Sergeant</span></div>
+          <div><b>Cancer survivor</b><span>In remission since 2004</span></div>
+          <div><b>Granada Hills, CA</b><span>Hometown · lives in Corona, CA</span></div>
+          <div><b>14 top-5 seasons</b><span>In 16 full Funny Car campaigns</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-blue" href="https://gofastjack.com/about/">Full bio</a>
+          <a class="btn btn-ghost" href="https://gofastjack.com/survivors-story/">Survivor's story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section class="sec" id="media" aria-labelledby="media-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Photos · Videos · Podcasts</div>
+          <h2 class="display" id="media-h">Media</h2>
+        </div>
+        <a class="more" href="https://gofastjack.com/2026-gallery/">2026 gallery →</a>
+      </div>
+      <div class="media-grid">
+        <a class="m1" href="https://gofastjack.com/2026-gallery/"><img src="img/photo-1.jpg" alt="Jack Beckman hoisting a Wally trophy beside the PEAK Funny Car at night"></a>
+        <a href="https://gofastjack.com/2026-gallery/"><img src="img/photo-2.jpg" alt="The PEAK Chevrolet Funny Car launching in front of a packed grandstand"></a>
+        <a href="https://gofastjack.com/2026-gallery/"><img src="img/photo-3.jpg" alt="Jack waving to fans from a Chevrolet Tahoe during driver introductions"></a>
+        <a href="https://gofastjack.com/2026-gallery/"><img src="img/photo-4.jpg" alt="Jack in the cockpit wearing the PEAK helmet"></a>
+        <a href="https://gofastjack.com/2026-gallery/"><img src="img/news-10.03.26.jpg" alt="The PEAK Funny Car at the Midwest Nationals"></a>
+      </div>
+      <div class="media-links">
+        <a href="https://gofastjack.com/photos/"><span>Photos<small>2019 – 2026 galleries</small></span><span class="arrow">→</span></a>
+        <a href="https://gofastjack.com/videos/"><span>Videos<small>Race-day clips &amp; interviews</small></span><span class="arrow">→</span></a>
+        <a href="https://gofastjack.com/podcasts/"><span>Podcasts<small>Listen to Jack</small></span><span class="arrow">→</span></a>
+        <a href="https://gofastjack.com/hot-rod-history-series/"><span>Hot Rod History<small>Drag racing's early years</small></span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL CAMINO + HOT ROD HISTORY -->
+  <section class="sec" id="el-camino" aria-label="Projects" style="padding-top:0">
+    <div class="wrap proj-grid">
+      <a class="proj" href="https://gofastjack.com/el-camino/">
+        <img src="img/elcamino.jpg" alt="Jack Beckman's El Camino">
+        <div class="b">
+          <div class="eyebrow">Garage project</div>
+          <h3>The El Camino restoration</h3>
+          <p>A story that starts in the San Fernando Valley in the early '80s — the car that got a 7-year-old hooked on drag racing, brought back to life.</p>
+          <div class="sub"><span>Restoration Journey</span><span>The Journey Continues</span></div>
+        </div>
+      </a>
+      <a class="proj" href="https://gofastjack.com/hot-rod-history-series/">
+        <img src="img/hotrod.jpg" alt="Hot Rod History Series">
+        <div class="b">
+          <div class="eyebrow">Video series</div>
+          <h3>Hot Rod History Series</h3>
+          <p>Jack's lectures on the birth of drag racing, 1950–1959, with the early '60s up next.</p>
+          <div class="sub"><span>Watch the series</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="light sec" id="partners" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Powered by</div>
+          <h2 class="display" id="partners-h">Partners</h2>
+        </div>
+        <a class="more" href="https://gofastjack.com/partners/">All partners →</a>
+      </div>
+      <div class="logos">
+        <a class="feat" href="https://www.peakauto.com/" target="_blank" rel="noopener"><img src="img/logo-peak.png" alt="PEAK Antifreeze &amp; Coolant"></a>
+        <a href="https://www.owi.com/" target="_blank" rel="noopener"><img src="img/logo-owi.png" alt="Old World Industries"></a>
+        <a href="https://www.hendrickcars.com/" target="_blank" rel="noopener"><img src="img/logo-hendrick.png" alt="HendrickCars.com"></a>
+        <a href="https://www.grahamrahalperformance.com/" target="_blank" rel="noopener"><img src="img/logo-rahal.png" alt="Graham Rahal Performance"></a>
+        <a href="https://gofastjack.com/partners/"><img src="img/logo-bluedef.png" alt="BlueDEF"></a>
+        <a href="https://gofastjack.com/partners/"><img src="img/logo-finalcharge.png" alt="Final Charge"></a>
+        <a href="https://gofastjack.com/partners/"><img src="img/logo-thermal.png" alt="Thermal Charge"></a>
+      </div>
+
+      <div class="sponsor" id="sponsor">
+        <div style="position:relative">
+          <div class="eyebrow">Sponsor</div>
+          <h3>Ride along at 330 mph</h3>
+          <p>From national TV on FOX to a champion who connects with fans in the pits, a partnership with Fast Jack puts your brand in front of NHRA's most loyal audience.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-blue" href="https://gofastjack.com/sponsor/">Partner with Jack</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT / CONTACT -->
+  <section class="connect sec" id="contact" aria-labelledby="contact-h">
+    <div class="wrap connect-grid">
+      <div>
+        <div class="eyebrow">Stay connected</div>
+        <h2 class="display" id="contact-h" style="margin-bottom:18px">Follow the ride</h2>
+        <p>Race-day updates, behind-the-scenes, and Hot Rod History drops.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/fastjackbeckman_fc/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM21.9 7.9c-.1-1.6-.4-3-1.6-4.2S17.7 2.2 16.1 2.1C14.5 2 9.5 2 7.9 2.1c-1.6.1-3 .4-4.2 1.6S2.2 6.3 2.1 7.9C2 9.5 2 14.5 2.1 16.1c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.1 6.6.1 8.2 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.6.1-6.6 0-8.2Zm-2 9.9a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9A3.3 3.3 0 0 1 6.2 4.1c1.3-.5 4.4-.4 5.9-.4s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9Z"/></svg></a>
+          <a href="https://www.facebook.com/FastJackBeckman/" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 8V6.2c0-.8.2-1.2 1.4-1.2H17V2h-2.6C11.6 2 10.6 3.4 10.6 5.8V8H8.5v3h2.1v11H14V11h2.7l.3-3H14Z"/></svg></a>
+          <a href="https://x.com/FastJackBeckman" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCzNkilcKETNmrYV0mW8f4wQ" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Team JFR</h3>
+        <ul class="linklist">
+          <li><a href="https://johnforceracing.com/" target="_blank" rel="noopener">John Force Racing <span>↗</span></a></li>
+          <li><a href="https://www.facebook.com/TeamJFR" target="_blank" rel="noopener">Team JFR on Facebook <span>↗</span></a></li>
+          <li><a href="https://nitromall.com/collections/john-force-racing" target="_blank" rel="noopener">Shop gear at Nitro Mall <span>↗</span></a></li>
+          <li><a href="https://www.nhra.com/schedule/2026" target="_blank" rel="noopener">NHRA schedule <span>↗</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Media requests, appearances, sponsorships, and fan mail.</p>
+        <a class="btn btn-blue" href="https://gofastjack.com/contact/">Contact Jack</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="l"><img src="img/logo-jfr.png" alt="John Force Racing"><span>Unofficial redesign concept — not affiliated with Jack Beckman, John Force Racing or their partners. Visit the official site at <a href="https://gofastjack.com/">gofastjack.com</a>. Photos and logos belong to their owners.</span></div>
+    <a href="#top" style="text-decoration:none">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.querySelector('.menu-btn');
+    btn.addEventListener('click',function(){
+      var open=document.body.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded',open);
+    });
+    document.querySelectorAll('#site-nav a').forEach(function(a){
+      a.addEventListener('click',function(){document.body.classList.remove('nav-open');btn.setAttribute('aria-expanded','false');});
+    });
+  })();
+</script>
+</body>
+</html>
